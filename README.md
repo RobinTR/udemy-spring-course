@@ -1,2 +1,3 @@
 # udemy-spring-course
-Udemy Spring Boot 3, Spring 6 &amp; Hibernate for Beginners Course practices
+Course Name: [NEW] Spring Boot 3, Spring 6 & Hibernate for Beginners
+Course Description: Spring Boot 3: Learn Spring 6, Spring Core, Spring REST, Spring MVC, Spring Security, Thymeleaf, JPA, Hibernate, MySQL
