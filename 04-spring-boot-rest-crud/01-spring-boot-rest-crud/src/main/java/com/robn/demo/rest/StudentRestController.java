@@ -3,6 +3,7 @@ package com.robn.demo.rest;
 import com.robn.demo.entity.Student;
 import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,5 +26,11 @@ public class StudentRestController {
     public List<Student> getStudents() {
         //Spring Jackson Data Binding is automatically done.
         return students;
+    }
+
+    @GetMapping("/students/{studentId}")
+    public Student getStudent(@PathVariable int studentId) {
+        //Index of the list. Simple approach for now.
+        return students.get(studentId);
     }
 }
