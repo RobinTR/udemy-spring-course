@@ -5,8 +5,13 @@
     <title>Home Page</title>
 </head>
 <body>
-  <h2>Home Page</h2>
-  <hr />
-  Welcome to the company home page!
+    <h2>Home Page</h2>
+    <hr />
+    <p>
+        Welcome to the company home page!
+    </p>
+    <form action="#" th:action="@{/logout}" method="POST">
+        <button type="submit">Logout</button>
+    </form>
 </body>
 </html>
