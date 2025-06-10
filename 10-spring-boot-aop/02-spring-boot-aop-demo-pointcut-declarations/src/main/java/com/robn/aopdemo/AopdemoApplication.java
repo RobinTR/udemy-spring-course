@@ -23,6 +23,8 @@ public class AopdemoApplication {
 
 	private void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO) {
 		Account account = new Account();
+		account.setName("Test");
+		account.setLevel("Platinum");
 		accountDAO.addAccount(account, true);
 		accountDAO.doWork();
 		accountDAO.getName();
