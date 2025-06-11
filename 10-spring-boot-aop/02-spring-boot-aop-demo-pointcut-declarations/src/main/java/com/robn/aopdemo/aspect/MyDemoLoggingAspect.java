@@ -2,10 +2,7 @@ package com.robn.aopdemo.aspect;
 
 import com.robn.aopdemo.Account;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -52,5 +49,15 @@ public class MyDemoLoggingAspect {
             String upperName = account.getName().toUpperCase();
             account.setName(upperName);
         }
+    }
+
+    @AfterThrowing(
+            pointcut = "execution(* com.robn.aopdemo.dao.AccountDAO.findAccounts(..))",
+            throwing = "exc"
+    )
+    public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable exc) {
+        String method = joinPoint.getSignature().toShortString();
+        System.out.println("\n======>>>> Executing @AfterThrowing on method: " + method);
+        System.out.println("\n=====>>> The exception is: " + exc);
     }
 }
