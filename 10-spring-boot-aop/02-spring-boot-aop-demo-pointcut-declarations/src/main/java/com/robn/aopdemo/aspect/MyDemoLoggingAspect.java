@@ -72,11 +72,19 @@ public class MyDemoLoggingAspect {
     public Object aroundGetFortune(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         String method = proceedingJoinPoint.getSignature().toShortString();
         System.out.println("\n======>>>> Executing @Around on method: " + method);
-        long begin = System.currentTimeMillis();
-        Object result = proceedingJoinPoint.proceed();
-        long end = System.currentTimeMillis();
+        long begin = System.nanoTime();
+        Object result = null;
+
+        try {
+            result = proceedingJoinPoint.proceed();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            result = "Major accident! But no worries, your private AOP helicopter its on the way!";
+        }
+
+        long end = System.nanoTime();
         long duration = end - begin;
-        System.out.println("\n======>>>> Duration: " + duration / 1000.0 + " seconds");
+        System.out.println("\n======>>>> Duration: " + duration + " nanoseconds");
 
         return result;
     }
