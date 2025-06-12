@@ -60,4 +60,10 @@ public class MyDemoLoggingAspect {
         System.out.println("\n======>>>> Executing @AfterThrowing on method: " + method);
         System.out.println("\n=====>>> The exception is: " + exc);
     }
+
+    @After("execution(* com.robn.aopdemo.dao.AccountDAO.findAccounts(..))")
+    public void afterFinallyFindAccountsAdvice(JoinPoint joinPoint) {
+        String method = joinPoint.getSignature().toShortString();
+        System.out.println("\n======>>>> Executing @After (finally) on method: " + method);
+    }
 }
